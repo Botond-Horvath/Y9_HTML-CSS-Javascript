@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+
+<html>
+
+	<head>
+
+		<title>UN Goals</title>
+
+		<style> 
+
+			body {
+				background-color:#F1D49A;
+				font-family:Verdana;
+				margin:0;
+			}
+
+			@media only screen and (max-width: 700px) {
+				body {
+					margin-right:40px;
+					margin-left:40px;
+				}
+			}
+
+			p, ol {
+				margin:20px;
+			}
+
+			h1.feature {
+				display:block;
+				text-align:center;
+				color:white;
+				height:500px;
+				font-family:Gill Sans;
+				padding:20px;
+				margin:0;
+				padding-top:190px;
+				padding-bottom:0px;
+				font-size:50px;
+				position:sticky;
+			}
+
+			header {
+				background-image: url(ed_bg.jpg);
+				background-size:1450px 700px;
+			}
+
+			aside {
+				margin-left:30px;
+			}
+
+			main-upper {
+				width:70%;
+				float:left;
+				margin:15px;
+				background-image:url(chalkboard.jpg);
+				border-radius:10px;
+				color:white
+			}
+
+			main-upper > h4 {
+				padding-left:20px;
+			}
+
+			main-lower {
+				width:100%;
+				float:left;
+				color:black
+			}
+
+			#nav {
+				list-style-type:none;
+				z-index:10;
+				margin:0;
+				width:100%;
+				padding:0;
+				background-image:url(chalkboard.jpg);
+				overflow:hidden;
+				top:0;
+				box-shadow:2px 5px 10px black
+			}
+
+			#nav li > a {
+				float:left;
+				display:inline-block;
+				color:white;
+				padding:10px;
+				font-family:Gill Sans;
+				font-size:20px;
+				text-decoration:none;
+			}
+		
+			#nav li > a:hover {
+				background-color:#F1D49A;
+				color: black;
+				font-weight:bold
+			}
+
+			#nav li > a.current {
+				background-color:#C38731;
+				color: white;
+			}
+
+			.sticky {
+				position:fixed;
+				top:0;
+				margin:100%;
+			}
+
+			h3.donate {
+				margin-top:0px;
+				padding-top:10px;
+				padding-bottom:10px;
+				text-align:center;
+				background-color:#C38731;
+				border-bottom-right-radius:5px
+				border-bottom-left-radius:5px
+			}
+
+			ul.donate {
+				list-style-type:none;
+				margin-top:20px;
+				margin-right:30px;
+				width:18%;
+				float:left;
+				padding:25px;
+				overflow:hidden;
+				background-color:#f0ba50;
+				top:0;
+				box-shadow:2px 5px 10px black
+			}
+
+			li.donate > a {
+				display:inline-block;
+				color:black;
+				padding:10px;
+				margin-bottom:10px;
+				font-family:Gill Sans;
+				text-decoration:none;
+				box-shadow:1px 2px 20px black
+			}
+
+			li.donate a:hover {
+				background-color:#C38731;
+				color:white;
+				font-weight:bold
+			}
+
+			h3.feature {
+				background-color:#C38731;
+				color:white;
+				margin-top:20px;
+				margin-bottom:30px;
+				padding:10px;
+				text-align:center;
+				font-family:Gill Sans;
+			}
+
+			.upper_shadow {
+				box-shadow:2px 5px 10px grey
+			}
+
+			.lower_shadow {
+				box-shadow:2px 5px 20px black
+			}
+
+			.video_fc {
+				display:flex;
+				flex-flow:row wrap;
+				justify-content:space-around;
+				align-items:center;
+			}
+
+			.video_fc > video {
+				width:1000px;
+			}
+
+			.slideshow {
+				position:relative;
+				width:1300px;
+				margin-left:70px;
+				height:300px;
+				background-image:url(chalkboard.jpg);
+				border-radius:10px;
+				box-shadow:2px 5px 10px black inset;
+				text-align:center;
+			}
+
+			#button1, #button2 {
+				background-color:#e6e47c;
+				width:50px;
+				height:50px;
+				transition: 0.8s ease;
+			}
+
+			#button1:hover, #button2:hover {
+				background-color:white;
+				cursor:pointer;
+				box-shadow:2px 3px 5px grey;
+			}	
+
+			#button1 {
+				position:absolute;
+				left:0;
+				top:110px;
+			}	
+
+			#button2 {
+				position:absolute;
+				right:0;
+				top:110px;
+			}
+
+			#current_num {
+				font-family:Courier New;
+				font-weight:bold;
+				font-size:20px;
+				color:yellow;
+				padding-top:20px;
+			}
+
+			#current_text {
+				font-family:Courier New;
+				font-style:italic;
+				font-weight:bold;
+				color:white;
+			}
+
+			.indent {
+				text-indent:50px;
+				font-style:italic;
+				text-align:center;
+			}
+
+			.facts {
+				background-image:url(chalkboard.jpg);
+				box-shadow:2px 5px 10px black inset;
+				color:white;
+				width:500px;
+				background-color:olive;
+				border-bottom-right-radius:20px;
+				float:left;
+			}
+
+			.facts > li {
+				padding:10px;
+				font-family:Tahoma;
+				font-size:15px;
+			}
+
+			.stats_fc {
+				height:800px;
+				width:100%;
+				display:flex;
+				flex-flow:row wrap;
+				justify-content:space-around;
+			}
+
+			.stats_fc > div {
+				position:relative;
+				align-items:top;
+				width:600px;
+				height:400px;
+				padding:0px;
+				margin:0px;
+			}
+
+			#but1, #but2, #but3 {
+				background-color:lightgrey;
+				width:95px;
+				height:30px;
+				cursor:pointer;
+				transition:0.4s ease;
+			}
+			
+			#but1:hover, #but2:hover, #but3:hover {
+				background-color:grey;
+				border-top:3px solid #e6e47c;
+				cursor:pointer;
+			}
+
+			#but1 {
+				position:absolute;
+				top:10px;
+				left:40px
+			}
+
+			#but2 {
+				position:absolute;
+				top:10px;
+				left:40px
+			}
+
+			#but3 {
+				position:absolute;
+				top:240px;
+				left:40px
+			}
+
+			#enlarge1, #enlarge2, #enlarge3 {
+				background-color:white;
+				cursor:pointer;
+				transition:0.6s ease;
+				width:23px;
+				height:20px;
+			}
+
+			#enlarge1:hover, #enlarge2:hover, #enlarge3:hover {
+				background-color:green;
+				border-bottom:3px solid #e6e47c;
+			}
+
+			#enlarge1 {
+				position:absolute;
+				top:17px;
+				right:80px;
+			}
+
+			#enlarge2 {
+				position:absolute;
+				top:16px;
+				right:110px;
+			}
+
+			#enlarge3 {
+				position:absolute;
+				top:210px;
+				left:40px;
+			}
+
+			figure {
+				display:table;
+			}
+
+			figure > img {
+				box-shadow:2px 4px 10px black;
+				width:450px;
+				height:auto;
+			}
+
+			figcaption {
+				display: table-caption;
+				caption-side: bottom;
+				text-align:center;
+				font-style:italic;
+				font-size:smaller;
+				padding-top:10px;
+			}
+
+			.stats_bg {
+				background-color:#f0ba50;
+				border-radius:20px;
+				margin-left:40px;
+				margin-right:40px;
+			}
+
+			a {
+				color:#FF8C00;
+				text-decoration:none;
+			}
+
+			a:hover {
+				font-weight:bold;
+			}
+
+			#table1 {
+				box-shadow:2px 4px 10px black;
+				width:480;
+				height:330;
+				border:1px solid black;
+				font-family:Helvetica; 
+				display:none;
+			}
+
+		</style>
+	</head>
+
+<body>
+
+	<header>
+		<h1 class="feature">Goal #4: Quality Education</h1>
+	</header>
+		<ul id="nav">
+			<li><a class="current" href="Quality_Education.html">Quality Educaiton</a></li>
+			<li><a href="No_Poverty.html">No Poverty</a></li>
+			<li><a href="Comparison.html">Comparison</a></li>
+		</ul>
+
+	<aside>
+		<ul class="donate">
+			<h3 class="donate">Donate</h3>
+			<li class="donate">
+				<a href="https://www.unicef.org/">
+					<h4>UNICEF</h4>
+					<p>
+					UNICEF is  a branch organisation of the UN, advocating for children’s rights and lives all over the world, from fighting poverty and supporting children in war zones to the education of children
+					</p>
+				</a>
+			</li>
+			<li class="donate">
+				<a href="https://plan-international.org/">
+					<h4>Plan International</h4>
+					<p>
+						Plan international is a charity that focuses primarily on educational rights for children and adolescents, and equal opportunities for girls.
+					</p>
+				</a>
+			</li>
+			<li class="donate">
+				<a href="https://www.savethechildren.ca/">
+					<h4>Save the Children</h4>
+					<p>
+						Save the Children is an organisation and charity aiding, empowering, and protecting children all over the world. It focuses on a wide range of issues, including the lack of education. 
+					</p>
+				</a>
+			</li>
+			<li class="donate">
+				<a href="https://www.africaneducationfoundation.org/">
+					<h4>African Education Foundation</h4>
+					<p>
+						The AEF is a charity that is dedicated to the improvement of west africa in aspects of health and education. It focuses on the construction of schools, health clinics, and other learning centers like libraries.
+					</p>
+				</a>
+			</li>
+			<li class="donate">
+				<a href="https://www.romaeducationfund.org/">
+					<h4>Roma Education Fund</h4>
+					<p>
+						The REF is a charity dedicated to bridging the gap educational outcomes between the Roma and non-Roma people throughout central and eastern Europe. 
+					</p>
+				</a>
+			</li>
+			<li class="donate">
+				<a href="https://edtrust.org/">
+					<h4>The Education Trust</h4>
+					<p>
+						The Education Trust is an organisation based in the US dedicated to closing the gaps for education of students of colour and of low income families.
+					</p>
+				</a>
+			</li>
+		</ul>
+	</aside>
+
+	<main-upper>
+	
+		<h3 class="feature upper_shadow">About</h3>
+
+			<p>
+				Education is a fundamental human right, and not having access to quality education, or education at all, is a huge problem all around the world. Roughly one in five school age children are not in school at all, and 759 million adults around the world are unable to read and write. That is almost 10% of the world population! It is true that there has been some progress, and there are more children and adolescents attending school today than ever before, but according to UNICEF, in the majority of these schools, learning doesn’t happen on the level that it should. 
+
+			</p>
+			<p class="indent">
+				“Schooling does not always lead to learning. Worldwide, there are more non-learners in school than out of school”
+			</p>
+
+			<p>
+				Furthermore, UNICEF states that there are many reasons for why young people are unable to attend school, the most prominent barrier being <a href="No_poverty.html">poverty</a>. 
+			</p>
+			<p class="indent">
+				“children from the poorest households almost five times more likely to be out of primary school than those from the richest”
+			</p>
+			<p>
+				Children therefore that are born into a cycle of generational poverty are much less likely to attend or do well in school. This is true even if a school is free, since these families are less likely to think highly of education. 
+			</p>
+
+		<div class="video_fc">
+ 			<iframe width="780" height="440" src="https://www.youtube.com/embed/EkW-M2ElrfQ" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+ 		</div>
+
+		<h3 class="feature upper_shadow">Causes</h3>
+			<p>
+				As said, generational poverty is one of the largest causes of the lack of education, but there are many others. 
+			</p>
+		
+		<h4>Disabilities / ethinc minorities</h4>
+			<p class="indent">
+				According to UNICEF, these groups of children are more likely to be left behind when it comes to education. 
+			</p>
+			<p class="indent">
+				The <a href="http://www.ohrc.on.ca/en/main-barriers-education-students-disabilities-fact-sheet">Ontario Human Rights Association</a> states that children with disabilities find it harder to access edication due to the lack of infrastructure. Furthermore, belonging to an ethnic minority in a country remains a significant barrier to education. According to the <a href="https://www.brookings.edu/articles/unequal-opportunity-race-and-education/">Brookings Insitute</a>, many students, including in the US, "routinely receive dramatically different learning opportunities based on their social status". Also, there remains, espetially in the US, a significant gap in funding of less finantially strong areas.
+			</p>
+		<h4>Gender</h4>
+			<p class="indent">
+				UNICEF states that only 66 percent of countries have achieved gender parity in primary education. This mostly affects girls negatively, but there are some parts of the world where boys are also negatively affected by this. 
+			</p>
+		<h4>Location</h4>
+			<p class="indent">
+				<a href="https://www.unicef.org/press-releases/millions-worlds-poorest-urban-children-are-more-likely-die-young-and-less-likely">UNICEF</a> also states that children from rural areas are more than twice as likely to be out of primary school than their urban peers. It also cites conflict as a large scale barrier to education. 
+			</p>	
+			<p class="indent">
+				The <a href="https://www.globalcitizen.org/en/">Global Citizen</a> also states that poor education can turn generational when the lack of well educated teachers becomes a further problem, which it is in many areas. 
+			</p>
+	</main-upper>
+
+	<main-lower>
+		<h3 class="feature lower_shadow" style="margin-top:0;">The Stats</h3>
+
+			<p style="padding-bottom:10px">
+				In addition to the fact that roughly one in five school age children are not in school, and 759 million adults around the world are illiterate, there are many other shocking statistics, as seen below. These stats will explore the whole world in terms of the education of children, teenagers, and young adults in universtity. There is a table option for the view for all of the pictures too. You may wish to enlarge the images with the enlarge option.  
+			</p>
+
+			<div class="stats_bg">
+				<div class="stats_fc">
+					<div>
+						<ol class="facts">
+							<li>
+								According to the <a href="https://www.globalcitizen.org/fr/content/the-value-of-education/">Global Citizen</a>, an article, a child whose mother can read is 50% more likely to survive past the age of 5. 
+							</li>
+							<li>
+								If all women had a primary education, there would be 1.7 million fewer malnourished children.
+							</li>
+							<li>
+								In 2012, there were 168 million child labor workers aged 5 to 17. This is one reason many children cannot attend school (<a href="http://uis.unesco.org/">UNESCO institute of statistics</a>).
+							</li>
+							<li>
+								Over 40 years, equitable access to quality education can result in a rise of the gross domestic product per capita of a country by 23%. 
+							</li>
+						</ol>
+					</div>
+
+					<div>
+						<figure>
+							<img src="Out_Of_School_Rate.jpg" alt="Out of school rate per global regions">
+							<figcaption>Out of school rate by region and age group (<a href="http://uis.unesco.org/sites/default/files/documents/new-methodology-shows-258-million-children-adolescents-and-youth-are-out-school.pdf">UNESCO</a>)</figcaption>
+						</figure>
+
+						<table id="table1">
+							<tr>
+								<th>Name:</th>
+								<th>Age:</th>
+							</tr>
+							<tr>
+								<td>Botond</td>
+								<td>15</td>
+							</tr>
+							<tr>
+								<td>Marcell</td>
+								<td>14</td>
+							</tr>
+							<tr>
+								<td>Adam</td>
+								<td>17</td>
+							</tr>
+						</table>
+
+						<button id="but1" onclick="table()">View Table</button>
+
+						<a href="file:///Users/botond.horvath/Documents/Y9python/Web%20Developement/Summative_Site/Out_Of_School_Rate.jpg" target="_blanck">
+						<input type="image" id="enlarge1" src="enlarge.png" alt="Enlarge"/>
+						</a>
+					</div>
+					<div>
+						<figure>
+							<img src="Compulsory_Geo.jpg" alt="Compulsery education duration per 	country">
+							<figcaption>Duration of compulsory education per country (<a href="http://uis.unesco.org/sites/default/files/documents/new-methodology-shows-258-million-children-adolescents-and-youth-are-out-school.pdf">UNESCO</a>)</figcaption>
+						</figure>
+				
+						<button id="but2" onclick="">View Table</button>
+
+						<a href="file:///Users/botond.horvath/Documents/Y9python/Web%20Developement/Summative_Site/Compulsory_Geo.jpg" target="_blanck">
+						<input type="image" id="enlarge2" src="enlarge.png" alt="Enlarge"/>
+						</a>
+					</div>
+					<div>
+						<figure>
+							<img src="University_Geo.jpg" alt="Percentige of tetrary education per country">
+							<figcaption>Share of the population per country with completed tertiary education (<a href="https://ourworldindata.org/tertiary-education">World Bank</a>)</figcaption>
+						</figure>
+
+						<button id="but3" onclick="">View Table</button>
+
+						<a href="file:///Users/botond.horvath/Documents/Y9python/Web%20Developement/Summative_Site/University_Geo.jpg" target="_blanck">
+						<input type="image" id="enlarge3" src="enlarge.png" alt="Enlarge"/>
+						</a>
+					</div>
+				</div>
+			</div>
+
+
+			<p>
+				From all of this, we can see that the most affected areas of the lack of education are the areas in Africa and South / South-East Asia. This is important information, since it provides important knowledge when comparing this goal to <a href="No_poverty.html">no poverty</a> in the <a href="Comparison.html">comparison</a>. It is also striking to see not just the amount of students that are unable to attend school, but also the amount of students around the world that are unable to receive quality education, and any education that is above the primary level. We also see some of the striking effects of education on not just generational poverty for example, but also on the quality of life of individuals.
+			</p>
+	
+		<h3 class="feature lower_shadow">The Goal</h3>
+		
+		<p>
+			Here are some of the milestones that United Nations wants to achieve in order to meet the expectations of this objective:
+		</p>
+
+		<div class="slideshow">
+			<div>
+				<input type="image" onclick="prev_point()" id="button1" src="prev.png" alt="Previous Point"/>
+			</div>
+			<h4 id="current_num"></h4>
+			<p id="current_text"></p>
+			<div>
+				<input type="image" onclick="next_point()" id="button2" src="next.png" alt="Next Point"/>
+			</div>
+		</div>
+		
+		<h3 class="feature lower_shadow">What Can You Do?</h3>
+		
+			<p>
+				You are probably reading this because you are literate, or in other words, you are able to read and write. Almost 10% of the world population though is not, and that is due to the immediate cause of the lack of education. This crisis is slowly improving though, with gradual efforts to put children in schools, but it is only possible with your help and donations, since that is the only way that organisations like UN and UNICEF can make a difference. The COVID-19 pandemic furthermore has complicated the access to education of virtually all students on the entire planet! Please check out the ‘Donate’ section on the left and make a difference in the world, or check out some of the pages of well known organisation below:
+			</p>
+	</main-lower>
+
+</body>
+
+	<script>
+			var my_num = 0;
+			var un_goal_nums = ['4.1','4.2','4.3','4.4','4.5','4.6','4.7','4.a','4.b','4.c']
+			var un_goal_text = ['By 2030, ensure that all girls and boys complete free, equitable and quality primary and secondary education leading to relevant and effective learning outcomes.',
+				'By 2030, ensure that all girls and boys have access to quality early childhood development, care and pre-primary education so that they are ready for primary education',
+				'By 2030, ensure equal access for all women and men to affordable and quality technical, vocational and tertiary education, including university',
+				'By 2030, substantially increase the number of youth and adults who have relevant skills, including technical and vocational skills, for employment, decent jobs and entrepreneurship.',
+				'By 2030, eliminate gender disparities in education and ensure equal access to all levels of education and vocational training for the vulnerable, including persons with disabilities, indigenous peoples and children in vulnerable situations',
+				'By 2030, ensure that all youth and a substantial proportion of adults, both men and women, achieve literacy and numeracy.',
+				'By 2030, ensure that all learners acquire the knowledge and skills needed to promote sustainable development, including, among others, through education for sustainable development and sustainable lifestyles, human rights, gender equality, promotion of a culture of peace and non-violence, global citizenship and appreciation of cultural diversity and of culture’s contribution to sustainable development',
+				'Build and upgrade education facilities that are child, disability and gender sensitive and provide safe, non-violent, inclusive and effective learning environments for all',
+				'By 2020, substantially expand globally the number of scholarships available to developing countries, in particular least developed countries, small island developing States and African countries, for enrolment in higher education, including vocational training and information and communications technology, technical, engineering and scientific programmes, in developed countries and other developing countries',
+				'By 2030, substantially increase the supply of qualified teachers, including through international cooperation for teacher training in developing countries, especially least developed countries and small island developing States.'
+				]
+
+			document.getElementById("current_num").innerHTML = un_goal_nums[my_num];
+			document.getElementById("current_text").innerHTML = un_goal_text[my_num]; 
+			
+			function next_point() {
+				if (my_num < 9) {
+					my_num++;
+					document.getElementById("button1").style.display="inline-block";
+				}
+				else {
+					document.getElementById("button2").style.display="none";
+				}
+				document.getElementById("current_num").innerHTML = un_goal_nums[my_num];
+				document.getElementById("current_text").innerHTML = un_goal_text[my_num];
+			}
+			function prev_point() {
+				if (my_num > 0) {
+					my_num--;
+					document.getElementById("button2").style.display="inline-block";
+				}
+				else {
+					document.getElementById("button1").style.display="none";
+				}
+				document.getElementById("current_num").innerHTML = un_goal_nums[my_num];
+				document.getElementById("current_text").innerHTML = un_goal_text[my_num];
+			}
+
+
+			window.onscroll = function() {glue()};
+
+			var navbar = document.getElementById("nav");
+			var sticky = navbar.offsetTop;
+
+			function glue() {
+				if (window.pageYOffset >= sticky) {
+					navbar.classList.add("sticky")
+				} else {
+					navbar.classList.remove("sticky");
+				}
+			}
+
+
+			function table() {
+				var table = document.getElementById('table1').innerHTML;
+				var button = document.getElementById('but1').innerHTML;
+				if (table.style.display = 'none') {
+					console.log(1)
+					table.style.dispay = 'block';
+					button.value = 'View Image';
+				} else {
+					table.style.display = 'none';
+					button.value = 'View Table';
+				}
+        }
+			
+
+	</script>
+
+</html>
+
