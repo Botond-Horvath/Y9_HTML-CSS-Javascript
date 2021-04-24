@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+
+<html>
+	
+	<head> 
+
+		<style>
+
+			body {
+				background-color:yellow;
+				margin:30px;
+			}
+
+			.image_container {
+				width:450px;
+				height:300px;
+				overflow-x:auto;
+				overflow-y:auto;
+			}
+
+			img {
+				width:450px;
+				height:auto;
+			}
+		</style>
+
+	</head>
+
+	<body>
+
+		<div class="image_container">
+			<img id="img" src="Compulsory_Geo.jpg" alt="Compolsory Education per Country"/>
+		</div>
+		<button onclick="table()" width="100px">View Table</button>
+
+	</body>
+
+	<script>
+
+		function table() {
+			document.getElementById('img').src = "Ed_Table2.jpg";
+			document.getElementById('img').style.width = "550px";
+		}
+
+	</script>
+
+</html>

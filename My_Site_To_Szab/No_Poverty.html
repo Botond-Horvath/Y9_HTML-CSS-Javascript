@@ -1,0 +1,789 @@
+<!-- Calling HTML and opening tag -->
+<!DOCTYPE html>
+
+<html>
+
+	<!-- HEAD section of the page -->
+	<head>
+
+		<!-- This is the title that appears in the tab of the browser: -->
+		<title>UN Goals</title> 
+
+		<!-- Setting the icon for the tab of the website: -->
+		<link rel="icon" href="icon.jpg"/>
+
+		<!-- STYLE element with CSS content -->
+		<style> 
+
+			body {
+				background-color:#F1D49A; /* hex color code */
+				font-family:Verdana;
+				margin:0;
+			}
+
+			p, ol {
+				margin:20px;
+			}
+
+			/* For all size 1 headers */ 
+			h1.feature { 
+				display:block;
+				text-align:center;
+				color:white;
+				height:500px;
+				font-family:Gill Sans;
+				padding:20px;
+				margin:0;
+				padding-top:190px;
+				padding-bottom:0px;
+				font-size:50px;
+			}
+
+			header {
+				background-image: url(pov_bg.jpg); /* Background image */ 
+				background-size:1450px 700px;
+			}
+
+			aside {
+				margin-left:30px;
+			}
+
+			main-upper {
+				width:70%;
+				float:left;
+				margin:15px;
+				background-image:url(chalkboard.jpg);
+				border-radius:10px;
+				color:white
+			}
+
+			main-upper > h4 {
+				padding-left:20px;
+			}
+
+			main-lower {
+				width:100%;
+				float:left;
+				color:black
+			}
+
+			/* hash is the 'id' of navigation bar, used for Javascript identification */
+			#nav {
+				z-index:10;
+				margin:0;
+				width:100%;
+				padding:0;
+				background-image:url(chalkboard.jpg);
+				overflow:hidden;
+				box-shadow:2px 5px 10px black
+			}
+
+			/* Any link that is in list item */
+			#nav > a {
+				float:left;
+				display:inline-block;
+				color:white;
+				padding:10px;
+				font-family:Gill Sans;
+				font-size:20px;
+				text-decoration:none;
+			}
+		
+			/* hover function for when mouse hovered over object */ 
+			#nav > a:hover {
+				color:black;
+				font-weight:normal;
+			}
+
+			#nav > a.current {
+				background-color:#C38731;
+				color:white;
+				cursor:default;
+
+			}
+
+			/* sticky navigation bar */
+			.sticky {
+				position:fixed;
+				top:0;
+				margin:100%;
+			}
+
+			h3.donate {
+				margin-top:0px;
+				padding-top:10px;
+				padding-bottom:10px;
+				text-align:center;
+				background-color:#C38731;
+				border-bottom-right-radius:5px
+				border-bottom-left-radius:5px
+			}
+
+			ul.donate {
+				list-style-type:none;
+				margin-top:20px;
+				margin-right:30px;
+				width:18%;
+				float:left;
+				padding:25px;
+				overflow:hidden;
+				background-color:#f0ba50;
+				top:0;
+				box-shadow:2px 5px 10px black
+			}
+
+			li.donate > a {
+				display:inline-block;
+				color:black;
+				padding:10px;
+				margin-bottom:10px;
+				font-family:Gill Sans;
+				text-decoration:none;
+				box-shadow:1px 2px 20px black
+			}
+
+			li.donate a:hover {
+				background-color:#C38731;
+				color:white;
+				transition:0.6s transform;
+				transform:scale(1.2);
+			}
+
+			h3.feature {
+				background-color:#C38731;
+				color:white;
+				margin-top:20px;
+				margin-bottom:30px;
+				padding:10px;
+				text-align:center;
+				font-family:Gill Sans;
+			}
+
+			.upper_shadow {
+				box-shadow:2px 5px 10px grey /* Box shadow (like object is floating above screen plane) */
+			}
+
+			.lower_shadow {
+				box-shadow:2px 5px 20px black
+			}
+
+			.video {
+				display:flex; /* flex container for the video */
+				justify-content:space-around;
+				align-items:center; /* video centered with flex container as tool */
+			}
+
+			/* For indented text */
+			.indent {
+				text-indent:50px;
+				font-style:italic;
+				text-align:center;
+			}
+
+			.facts {
+				background-image:url(chalkboard.jpg); /* background image for smokey background */
+				box-shadow:2px 5px 10px black inset; /* inset box shadow for sunken look */
+				color:white;
+				width:500px;
+				background-color:olive;
+				border-bottom-right-radius:20px;
+				float:left;
+			}
+
+			.facts > li {
+				padding:10px;
+				font-family:Tahoma;
+				font-size:15px;
+			}
+
+			/* Flex container for positioning statistics images */ 
+			.stats_fc {
+				height:800px;
+				width:100%;
+				display:flex;
+				flex-flow:row wrap;
+				justify-content:space-around;
+			}
+
+			.stats_fc > div {
+				position:relative;
+				align-items:top;
+				width:600px;
+				height:400px;
+				padding:0px;
+				margin:0px;
+			}
+
+			/* Positionings of buttons for table views of stats image data */ 
+			button {
+				background-color:lightgrey;
+				width:95px;
+				height:30px;
+				cursor:pointer;
+				transition:0.4s ease; /* transition time for hover */
+			}
+
+			[id *= "but_image"] {
+				background-color:dodgerblue;
+			}
+			
+			/* For mouse hover */ 
+			button:hover {
+				background-color:aquamarine;
+				border-top:3px solid #e6e47c;
+				cursor:pointer;
+			}
+
+			/* Positions of buttons relative to images (position of images 'relative') */
+			#but_table1 {
+				position:absolute;
+				top:45px;
+				left:-55px
+			}
+
+			#but_table2 {
+				position:absolute;
+				top:44px;
+				right:15px
+			}
+
+			#but_table3 {
+				position:absolute;
+				top:44px;
+				right:15px
+			}
+
+			#but_image1 {
+				position:absolute;
+				top:15px;
+				left:-55px
+			}
+
+			#but_image2 {
+				position:absolute;
+				top:15px;
+				right:15px
+			}
+
+			#but_image3 {
+				position:absolute;
+				top:15px;
+				right:15px
+			}
+
+			.table_size {
+				width:490px;
+				height:300px;
+				overflow-y:scroll;
+			}
+
+			.image_size {
+				overflow-y:visible;
+			}
+
+			/* CSS for 'figure' and 'figcaption' tags working together with 'img' tag for captions */
+			figure {
+				display:table;
+			}
+
+			figure > img {
+				width:450px;
+				height:auto;
+			}
+
+			.hover_style:hover {
+				transition:0.6s transform;
+				transform:scale(1.2);
+			}
+
+			#img1:hover,#img2:hover,#img3:hover {
+				box-shadow:2px 5px 10px black;
+				cursor:pointer;	
+			}
+
+			figcaption {
+				display: table-caption;
+				caption-side: bottom;
+				text-align:center;
+				font-style:italic;
+				font-size:smaller;
+				padding-top:10px;
+			}
+
+			.stats_bg {
+				background-color:#f0ba50;
+				border-radius:20px;
+				margin-left:40px;
+				margin-right:40px;
+			}
+
+			/* Slideshow of UN sub-goals */
+			.slideshow {
+				position:relative;
+				width:1300px;
+				margin-left:70px;
+				height:300px;
+				background-image:url(chalkboard.jpg);
+				border-radius:10px;
+				box-shadow:2px 5px 10px black inset;
+				text-align:center;
+			}
+
+			/* Slideshow arrows that include Javascript (hense:id)*/
+			#button1, #button2 {
+				background-color:#e6e47c;
+				width:50px;
+				height:50px;
+				transition: 0.8s ease;
+			}
+
+			/* Hover */
+			#button1:hover, #button2:hover {
+				background-color:white;
+				cursor:pointer;
+				box-shadow:2px 3px 5px grey;
+			}	
+
+			#button1 {
+				position:absolute;
+				left:0;
+				top:110px;
+			}	
+
+			#button2 {
+				position:absolute;
+				right:0;
+				top:110px;
+			}
+
+			/* Number and the text of the sub-goal being displyed. This always changes with the use of Javascript */
+			#current_num {
+				font-family:Courier New;
+				font-weight:bold;
+				font-size:20px;
+				color:yellow;
+				padding-top:20px;
+			}
+
+			#current_text {
+				font-family:Courier New;
+				font-style:italic;
+				font-weight:bold;
+				color:white;
+			}
+
+			/* Color of any link and design when hovering over link */
+			a {
+				color:#0099CC;
+				text-decoration:none;
+			}
+
+			a:hover {
+				background-color:#F1D49A;
+				transition:0.6s ease;
+				cursor:pointer;
+			}
+
+			/* test for now... */
+			#table1 {
+				box-shadow:2px 4px 10px black;
+				width:480;
+				height:330;
+				border:1px solid black;
+				font-family:Helvetica; 
+				display:none;
+			}
+
+			.footer {
+				background-image:url(chalkboard.jpg);
+				height:150px;
+				font-family:Courier;
+				font-size:smaller;
+				font-style:italic;
+				text-align:center;
+				color:white;
+				box-shadow:2px 5px 30px black inset;
+				padding-top:20px;
+			}
+
+		</style>
+	</head>
+
+<!-- BODY part of the page for HTML content --> 
+<body>
+
+	<!-- HEADER tag with title of the page (h1 used for largest text) --> 
+	<header>
+		<h1 class="feature">Goal #1: No Poverty</h1>
+	</header>
+		
+	<!-- Unordered list for navigation bar, with links as list elements for functionality --> 
+	<div id="nav">
+		<a href="Quality_Education.html">Quality Education</a>
+		<a class="current" href="No_Povery.html">No Poverty</a>
+		<a href="Comparison.html">Comparison</a>
+	</div>
+
+	<!-- ASIDE tag for the Donate column of the page --> 
+	<aside>
+		<!-- Unordered list (vertical nav-bar) --> 
+		<ul class="donate">
+			<h3 class="donate">Donate</h3>
+			<li class="donate">
+				<!-- Link to UNICEF: -->
+				<a href="https://www.unicef.org/"> 
+					<!-- Displayed content that the user sees of that link: --> 
+					<h4>UNICEF</h4>
+					<p>
+					UNICEF is  a branch organisation of the UN, advocating for children’s rights and lives all over the world, from fighting poverty and supporting children in war zones to the education of children. 
+					</p>
+				</a>
+			</li>
+			<li class="donate">
+				<!-- Same as above all the way down (links to different charities) --> 
+				<a href="https://www.oxfam.org/en?cid=aff_affwd_donate_id78888&awc=5991_1618245451_6657f0b011cbd64657207ebb05446901">
+					<h4>Oxfam International</h4>
+					<p>
+						Oxfam International is dedicated to helping global development and mobilizing people against poverty. It serves as an international confederation of 19 organizations that work in around 90 countries. In the last 2 years, Oxfam International has worked with more than 22.3 million people across the world. 
+					</p>
+				</a>
+			</li>
+			<li class="donate">
+				<a href="https://www.opadint.org/">
+					<h4>OPAD</h4>
+					<p>
+						The Organization for Poverty Alleviation and Development is an international NGO organization that promotes, addresses, and campaigns for many issues such as human rights, sustainable development, and stopping climate change. OPAD offers a variety of services aimed at eradicating poverty through tools such as education, economic development, health promotion, and income redistribution.
+					</p>
+				</a>
+			</li>
+			<li class="donate">
+				<a href=" https://worldrelief.org/">
+					<h4>World Relief</h4>
+					<p>
+						World Relief is an international christian humanitarian organization working around the globe to overcome poverty, injustice, and violence. It takes part in programs of economic development, peacekeeping, heath and child development, and refugees.
+					</p>
+				</a>
+			</li>
+			<li class="donate">
+				<a href="https://www.care-international.org/">
+					<h4>Care Interiational</h4>
+					<p>
+						Care International is a one of the largest organizations fighting injustice and poverty. It works in over 90 countries, and places around 65 million people annually on a route out of poverty. It also delivered emergency aid into zones of conflict and natural disasters. 
+					</p>
+				</a>
+			</li>
+			<li class="donate">
+				<a href="https://www.worldvision.ca/">
+					<h4>World Vision</h4>
+					<p>
+						World Vision is an international christian charity and organization that works toward specifically helping children in impoverished areas of the world. 			
+					</p>
+				</a>
+			</li>
+		</ul>
+	</aside>
+	<!-- Closing tags --> 
+
+	<!-- MAIN-UPPER section contains HTML for beside the donate bar --> 
+	<main-upper>
+	
+		<!-- Content with h3 headers and paragraphs: -->
+		<!-- The upper-shadow class is the light shadow in front of the dark background of the lower area: --> 
+		<h3 class="feature upper_shadow">About</h3>
+
+			<p>
+				Poverty is a great problem in the world, and is in fact the cause of many other problems that arise in the world society. According to the <a href="https://www.un.org/sustainabledevelopment/poverty/">United Nations</a>, the amount of people living in extreme poverty has been on a steady decline since 1990, but there are still about 767 million people, or about 10% of the world’s population that lives in extreme poverty daily. This number is higher in rural areas: more than 17%, which is more that three times higher than the poverty rate in urban communities. This means that these people are struggling to fulfill their and their families basic needs of health and sanitation, education, or access to water and food. The majority of these people live on less than $1.90 a day, and the majority of them are in sub-saharan Africa. We have made progress in stopping poverty since 1990, but there is another looming risk in our era. 
+			</p>
+ 
+			<p class="indent">
+				“the pace of change is decelerating and the COVID-19 crisis risks reversing decades of progress in the fight against poverty” - <a href="https://www.un.org/sustainabledevelopment/poverty/">UN</a>
+			</p>
+ 			
+ 			<p>
+				In fact, the <a href="https://www.wider.unu.edu/publication/estimates-impact-covid-19-global-poverty">UNU World Institute for Development Economics Research</a> suggests that due to the economic fallout caused by the global pandemic, extreme poverty could grow by another half a million people, which would be another 8% of the global population added to the poverty line. This would be the first time that overall poverty would increase in the world since 1990. In fact, the effects of this pandemic are already seen. According to <a href="https://www.unicef.org/press-releases/150-million-additional-children-plunged-poverty-due-covid-19-unicef-save-children">UNICEF</a>, 150 million children have already plunged into poverty due to COVID-19, and that is only data from September. There have since then been two more wavers of COVID-19 that attacked most of the countries in the world, with now variants soaring. 
+			</p>
+ 
+			<p>
+				<a href="https://www.unicef.org/social-policy/child-poverty">UNICEF</a> states that one in five children in the world experience extreme poverty on a daily basis, and the experience for children can be much more destructive, and much different from adults. The experience of poverty for children can last lifelong. Many basic human rights are taken away from children experiencing poverty, and when they are deprived of these basic needs, this “[diminishes] the life chances ... and their ability to realize their full potential” (<a href="https://www.unicef.org/social-policy/child-poverty">UNICEF</a>).
+			</p>
+
+		<!-- Video imported in an iframe from YouTube (UNICEF) -->
+		<div class="video">
+			<iframe width="950" height="399" src="https://www.youtube.com/embed/j7KKZ6v5o34" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+		</div>
+
+		<h3 class="feature upper_shadow">Causes</h3>
+			<p>
+				According to <a href="https://www.humanrightscareers.com/issues/root-causes-of-poverty/#:~:text=The%20United%20Nations%20Social%20Policy,minorities%20are%20the%20most%20vulnerable">Human Rights Careers</a>, there are many different causes that lead to poverty. The most important cause is generational. Most children in poverty are there because they are born into it, and once they are there, it is very hard to break out of this cycle if the child is not provided with booster support, like scholarships or access to education. This though is a phenomenon, and not a cause, so here are some of the points of why the parents or ancestors of those children were usually there in the first place:
+			</p>
+		
+		<h4>Lack of good jobs or job growth</h4>
+			<p class="indent">
+				If you are in an underdeveloped or developing country, it is very hard a lot of the time to find a job, or at least a good paying job. Therefore, you cannot get a formidable income. Furthermore, many traditional workplaces in many countries are disappearing, like farming, and people are finding it hard to adjust. 
+			</p>
+		<h4>Lack of quality education</h4>
+			<p class="indent">
+				This is probably one of the greatest causes of poverty, since it provides a break in the generational cycle, where new generations can rise above their parents and get better jobs, or even provide better jobs for the less fortunate. This unfortunately is a right that is deprived from many people around the world.
+			</p>
+		<h4>Warfare</h4>
+			<p class="indent">
+				When there is a war, people are completely deprived of their everyday lives, and this causes a lot of people to lose their homes, possibly their fathers or husbands, and very importantly their jobs or education. Many getting the worst of it could even be forced to flee. 
+			</p>
+		<h4>Climate Change</h4>
+			<p class="indent">
+				This is also another man made cause like warfare that has a huge impact on many that usually don’t even cause it. According to the World Bank, climate change has the power to impoverish 100 million people in the next decade. Floods, severe storms, and droughts to name a few have a detrimental effect on village communities or agricultural areas, knocking down the balance that had been here for thousands of years. 
+			</p>
+		<h4>Social Injustice</h4>
+			<p class="indent">	
+				This is a topic that has been around for many thousands of years, and is still to this day relevant in affecting poverty even in developed countries. Many people that belong to a certain race, like black people to name one in the US, are usually not given equal job or educational opportunities as opposed to their white counterparts. 
+			</p>
+		<h4>Lack of support</h4>
+			<p class="indent">
+				Finally, the lack of support is a problem for people trying to break the cycle of poverty. For example, lack of government funding, infrastructure (like access to water fountains), or healthcare are all barriers to development. Sometimes this is impossible for a government of a developing country to finance, because there is no money, and therefore it is important that us in developed countries also help. Please take a look at some of the charities and organizations on the left, so that you can make a difference! 
+			</p>
+	
+	</main-upper>
+
+	<!-- MAIN_LOWER section contains HTML for below the donate bar: -->
+	<main-lower>
+
+		<!-- Example of unique situation with embedded CSS into HTML: --> 
+		<!-- The lower-shadow class is the dark shadow in front of the light background of the lower area: --> 
+		<h3 class="feature lower_shadow" style="margin-top:0;">The Stats</h3>
+
+			<p style="padding-bottom:10px">
+				In this section, despite all of the information already mentioned, statistics on this topic are displayed below, so that the effect of this wide ranging issue of poverty could be better quantified. Below are some interesting facts and graphs of tables displaying some data on the topic 
+			</p>
+
+			<!-- Divider tags for organizing background colors and flex containers --> 
+			<div class="stats_bg">
+				<div class="stats_fc">
+					<div>
+						<!-- Ordered list for interesting facts --> 
+						<ol class="facts">
+							<li>
+								According to <a href="unicef.org">UNICEF</a>, as many as 150 million people could be added to extreme poverty solely caused by the effects of the COVID-19 pandemic. 
+							</li>
+							<li>
+								Accoring to <a href="https://cwp-csp.ca/poverty/just-the-facts/#:~:text=In%20Canada%2C%201.3%20million%20children,Nations%20children%20lives%20in%20poverty.&text=1%20in%205%20Edmontonian%20children,children%20in%20single%2Dparent%20families.">Canada Without Poverty</a>, 1 in 5 children in Canada alone live in conditions of poverty, where they have to worry about their basic needs daily!
+							</li>
+							<li>
+								About 20,000 children die each day due to the effects of living in poverty!
+							</li>
+							<li>
+								According to <a href="https://www.worldvision.org/sponsorship-news-stories/global-poverty-facts">World Vision</a>, extreme poverty rates nearly doubled in the Middle East and North Africa between 2015 and 2018 because of wars like those in Syria, Yemen, and Lybia. 
+							</li>
+						</ol>
+					</div>
+
+					<div>
+						
+						<div id="size1" class="image_size">
+							<!-- Figure and figcaption for image and caption -->
+							<figure>
+								<img id="img1" class="hover_style" src="Population_In_Poverty.jpg" alt="Share of the population living in extreme poverty around the globe (2017)">
+								<figcaption>Share of the population living in extreme poverty around the globe in 2017 (<a href="https://ourworldindata.org/extreme-poverty#:~:text=Most%20people%20in%20the%20world,less%20than%20%241.90%20per%20day">Our World in Data</a>)</figcaption>
+							</figure>
+						</div>
+
+						<!-- Button with onclick function redirecting to the table() function that is executed in Javascript -->
+						<button id="but_table1" onclick="table1()">View Table</button>
+						<button id="but_image1" onclick="image1()">View Image</button>
+
+						<!-- Enlarge button as link 'a' to enlarged image opening in new tab --> 
+					</div>
+					<div>
+						
+						<div id="size2" class="image_size">
+							<!-- Image and caption --> 
+							<figure>
+								<img id="img2" class="hover_style" src="Population_Household_Consumption.jpg" alt="Share of the world population living on less that $3.10 per capita houshold consumption a day in 2014">
+								<figcaption>Share of the world population living on less that $3.10 per capita houshold consumption a day in 2014 (<a href="https://ourworldindata.org/extreme-poverty#:~:text=Most%20people%20in%20the%20world,less%20than%20%241.90%20per%20day">Our World in Data</a>)</figcaption>
+							</figure>
+						</div>
+				
+						<!-- Button (as above) --> 
+						<button id="but_table2" onclick="table2()">View Table</button>
+						<button id="but_image2" onclick="image2()">View Image</button>
+
+					</div>
+					<div>
+						
+						<!-- Image and caption --> 
+						<figure>
+							<img id="img3" class="hover_style" src="Poverty_By_Region.jpg" alt="Amount of people in extreme poverty per world region in 2018.">
+							<figcaption>Amount of people in extreme poverty per world region in 2018 (<a href="https://ourworldindata.org/extreme-poverty#:~:text=Most%20people%20in%20the%20world,less%20than%20%241.90%20per%20day">World Bank</a>)</figcaption>
+						</figure>
+
+						<!-- Button (as above) --> 
+						<button id="but_table3" onclick="table3()">View Table</button>
+						<button id="but_image3" onclick="image3()">View Image</button>
+
+					</div>
+				</div>
+			</div>
+
+			<!-- Concluding paragraph for stats with embedded links --> 
+			<p>
+				As seen, very similar statistics unfold above as those that unfolded in the <a href="Quality_Education.html">Quality Education</a> section of the site. We see that the parts of the world (from the maps and the graph) that are the most touched by extreme poverty are those principally in Sub-Saharan Africa and South Asia. These areas are the same as the areas that are the most touched by the <a href="Quality_Education.html">lack of education</a>. Furthermore, these pieces of data from the <a href="https://ourworldindata.org/extreme-poverty#:~:text=Most%20people%20in%20the%20world,less%20than%20%241.90%20per%20day">World Bank</a> show the incredibly difficult situations that some developing countries are in compared to Canada, the United States, or Western Europe, that are the areas that we are used to living in. This is why it is very important to know that all of us living in these countries have the power to make a lasting difference, now more than ever during the challanges of COVID. 
+			</p>
+	
+		<h3 class="feature lower_shadow">The Goal</h3>
+		
+		<p>
+			UNICEF and UN aim with this goal to “end poverty in all of its forms”. They hope to achieve their goal by 2030, which is the goal that they have set for themselves. UN has also broken down this very multidimensional and complex goal into many smaller targets, which can be seen below: 
+		</p>
+
+		<!-- Div tag containing elements for the slideshow feature HTML --> 
+		<div class="slideshow">
+			
+			<!-- Button for displaying the previous UN sub-goal (function prev_point()) in Javascript --> 
+			<input type="image" onclick="prev_point()" id="button1" src="prev.png" alt="Previous Point"/>
+
+			<!-- ids for current_num and current_text, that are changed in Javascript by the buttons depending on the one the user is on --> 
+			<h4 id="current_num"></h4>
+			<p id="current_text"></p>
+
+			<!-- Button for displaying the next UN sub goal (funtion next_point()) in Javascript --> 
+			<input type="image" onclick="next_point()" id="button2" src="next.png" alt="Next Point"/>
+
+		</div>
+		
+		<!-- Final HTML section with header --> 
+		<h3 class="feature lower_shadow">What Can You Do?</h3>
+		
+			<p>
+				Think about this current moment in your life when you are reading this passage. You are probably reading this because you have a computer, perhaps a smartphone, and definitely some form of internet or data. Well, accoring to <a href="https://www.statista.com/statistics/617136/digital-population-worldwide/#:~:text=How%20many%20people%20use%20the,the%20internet%20via%20mobile%20devices.">Statista</a>, more that 40% of the world's population still has no access to the internet. There are many more families that are suffering every minute of every day, and it is not rare. The good news is that you have the power to make a difference, like everyone does, and it is not difficult. Please look at some of the orgnaizations and funds on the column on the left, at the top of the page, to learn about some organizations dedicated to making a difference. Thank you! 
+			</p>
+
+		<footer class="footer">
+			<p>
+				This website was created by Botond Horvath (UCC student)
+			</p>
+			<p>
+				Completed on 29th April, 2021
+			</p>
+		</footer>
+	</main-lower>
+
+<!-- End of BODY --> 
+</body>
+
+	<!-- SCRIPT section containing Javascript --> 
+	<script>
+			var my_num = 0; /* my_num couner for the UN sub_goal displayed */
+			
+			/* Array with the numbers of the UN sub-goals for Quality Education */
+			var un_goal_nums = ['1.1','1.2','1.3','1.4','1.5','1.6'] 
+			
+			/* Array with text for all of the sub-goals with same array place */
+			var un_goal_text = ['By 2030, reduce at least by half the proportion of men, women and children of all ages living in poverty in all its dimensions according to national definitions',
+				'Implement nationally appropriate social protection systems and measures for all, including floors, and by 2030 achieve substantial coverage of the poor and the vulnerable',
+				'By 2030, ensure that all men and women, in particular the poor and the vulnerable, have equal rights to economic resources, as well as access to basic services, ownership and control over land and other forms of property, inheritance, natural resources, appropriate new technology and financial services, including microfinance',
+				'By 2030, build the resilience of the poor and those in vulnerable situations and reduce their exposure and vulnerability to climate-related extreme events and other economic, social and environmental shocks and disasters',
+				'Ensure significant mobilization of resources from a variety of sources, including through enhanced development cooperation, in order to provide adequate and predictable means for developing countries, in particular least developed countries, to implement programmes and policies to end poverty in all its dimensions',
+				'Create sound policy frameworks at the national, regional and international levels, based on pro-poor and gender-sensitive development strategies, to support accelerated investment in poverty eradication actions',
+				]
+
+			document.getElementById("current_num").innerHTML = un_goal_nums[my_num]; 
+			/* current_num id in HTML will be equal to the 0th place of the un_goal_nums array */
+			document.getElementById("current_text").innerHTML = un_goal_text[my_num]; 
+			/* current_text id in HTML will equal the 0th place of the un_goal_text array */
+			
+			/* next_point() function from the next arrow button in HTML */
+			function next_point() {
+				/* Javascript If / Else statement */
+				if (my_num < 5) {
+					my_num++; /* my_num counter increases (if end of array not reached */
+					document.getElementById("button1").style.display="inline-block"; 
+				}
+				else {
+					document.getElementById("button2").style.display="none"; /* Button will no longer show if no new array items */
+				}
+				/* Display of the current_num and _text changes every time the button is pressed */
+				document.getElementById("current_num").innerHTML = un_goal_nums[my_num];
+				document.getElementById("current_text").innerHTML = un_goal_text[my_num];
+			}
+			
+			/* Same process in reverse for the previous point button function */
+			function prev_point() {
+				if (my_num > 0) {
+					my_num--;
+					document.getElementById("button2").style.display="inline-block";
+				}
+				else {
+					document.getElementById("button1").style.display="none";
+				}
+				document.getElementById("current_num").innerHTML = un_goal_nums[my_num];
+				document.getElementById("current_text").innerHTML = un_goal_text[my_num];
+			}
+
+
+			/* Javascript for the sticky navigation bar */
+			window.onscroll = function() {glue()}; /* If scrolling happens, the glue() function is called */
+
+			var navbar = document.getElementById("nav"); /* variable 'nav' is the HTML element with the nav id */
+			var sticky = navbar.offsetTop; /* if navbar reaches the top, that is the sticky variable */
+
+			function glue() { /* Glue function */
+				/* Javascript If / Else statement initiates sticky clss in CSS if navbar reaches the top of the page */
+				if (window.pageYOffset >= sticky) {
+					navbar.classList.add("sticky")
+				} else {
+					navbar.classList.remove("sticky");
+				}
+			}
+
+
+			var first_image = document.getElementById("img1");
+			var second_image = document.getElementById("img2");
+			var third_image = document.getElementById("img3");
+			
+			function table1() {
+				first_image.src = 'Pov_Table1.jpg';
+				first_image.classList.remove("hover_style");
+				document.getElementById("size1").classList.replace("image_size","table_size");
+				document.getElementById("but_table1").style.background = "dodgerblue";
+				document.getElementById("but_image1").style.background = "lightgrey";
+			}
+
+			function image1() {
+				first_image.src = "Population_In_Poverty.jpg";
+				first_image.classList.add("hover_style");
+				document.getElementById("size1").classList.replace("table_size","image_size");
+				document.getElementById("but_image1").style.background = "dodgerblue";
+				document.getElementById("but_table1").style.background = "lightgrey";
+			}
+
+			function table2() {
+				second_image.src = "Pov_Table2.jpg";
+				second_image.classList.remove("hover_style");
+				document.getElementById("size2").classList.replace("image_size","table_size");
+				document.getElementById("but_table2").style.background = "dodgerblue";
+				document.getElementById("but_image2").style.background = "lightgrey";
+			}
+
+			function image2() {
+				second_image.src = "Population_Household_Consumption.jpg";
+				second_image.classList.add("hover_style");
+				document.getElementById("size2").classList.replace("table_size","image_size");
+				document.getElementById('but_image2').style.background = "dodgerblue";
+				document.getElementById("but_table2").style.background = "lightgrey";
+			}
+
+			function table3() {
+				third_image.src = "Pov_Table3.jpg";
+				document.getElementById("but_table3").style.background = "dodgerblue";
+				document.getElementById("but_image3").style.background = "lightgrey";
+			}
+
+			function image3() {
+				third_image.src = "Poverty_By_Region.jpg";
+				document.getElementById('but_image3').style.background = "dodgerblue";
+				document.getElementById("but_table3").style.background = "lightgrey";
+			}
+			
+
+	</script>
+
+</html>
